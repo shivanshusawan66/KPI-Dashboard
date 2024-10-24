@@ -1,2 +1,2 @@
 # KPI-Dashboard
-Building a KPI dashboard in Streamlit using Python
+KPI dashboard in Streamlit using Python
