@@ -1,8 +1,7 @@
 from typing import List, Tuple
-
 import pandas as pd
-import plotly.express as px
 import streamlit as st
+import matplotlib.pyplot as plt
 
 def set_page_config():
     st.set_page_config(
@@ -54,17 +53,21 @@ def display_sidebar(data: pd.DataFrame) -> Tuple[List[str], List[str], List[str]
 def display_charts(data: pd.DataFrame):
     combine_product_lines = st.checkbox("Combine Product Lines", value=True)
 
-    if combine_product_lines:
-        fig = px.area(data, x='ORDERDATE', y='SALES',
-                      title="Sales by Product Line Over Time", width=900, height=500)
-    else:
-        fig = px.area(data, x='ORDERDATE', y='SALES', color='PRODUCTLINE',
-                      title="Sales by Product Line Over Time", width=900, height=500)
+    fig, ax = plt.subplots(figsize=(9, 5))
 
-    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-    fig.update_xaxes(rangemode='tozero', showgrid=False)
-    fig.update_yaxes(rangemode='tozero', showgrid=True)
-    st.plotly_chart(fig, use_container_width=True)
+    if combine_product_lines:
+        data.groupby('ORDERDATE')['SALES'].sum().plot(kind='area', ax=ax, title="Sales Over Time", color='skyblue', alpha=0.5)
+    else:
+        for product_line in data['PRODUCTLINE'].unique():
+            product_data = data[data['PRODUCTLINE'] == product_line]
+            product_data.groupby('ORDERDATE')['SALES'].sum().plot(kind='area', ax=ax, label=product_line, alpha=0.5)
+
+    ax.set_ylabel("Sales")
+    ax.set_xlabel("Order Date")
+    ax.set_title("Sales by Product Line Over Time")
+    ax.grid(True)
+    ax.legend(title='Product Line', bbox_to_anchor=(1.05, 1), loc='upper left')
+    st.pyplot(fig)
 
     col1, col2, col3 = st.columns(3)
 
