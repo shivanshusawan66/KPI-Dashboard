@@ -1,10 +1,11 @@
-Sales Dashboard 📊
-This is a web-based sales dashboard built with Streamlit and Plotly, designed to display key performance indicators (KPIs) and visualizations from a supermarket sales dataset. The dashboard allows users to filter data by city, customer type, and gender, and includes options to download the dataset in Excel format.
+### Sales Dashboard 📊
+*Live link:* Link[https://sales-kpi-dashboard.streamlit.app/
 
-Features
-Interactive Filtering: Filter sales data by city, customer type, and gender in the sidebar.
-Key Performance Indicators: Displays total sales, average rating, and average sales per transaction.
-Sales by Product Line: Horizontal bar chart to show sales breakdown by product line.
-Hourly Sales: Bar chart showing sales trends across different hours.
-Dataset Download: Download the dataset directly from the dashboard.
-Custom Styling: Minimalist dark-themed styling for an enhanced user experience.
+An interactive sales dashboard built with Streamlit and Plotly for visualizing and analyzing supermarket sales data. This dashboard allows users to explore sales metrics by filtering by city, customer type, and gender, with options to download the dataset for further analysis.
+
+### Features
+• Filterable Sales Data: Filter by city, customer type, and gender.
+• KPI Overview: Display key sales metrics such as total sales, average rating, and average sales per transaction.
+• Sales by Product Line: Horizontal bar chart to compare sales across product categories.
+• Hourly Sales Analysis: Bar chart displaying sales trends across different hours of the day.
+• Downloadable Dataset: Download the supermarket sales dataset in Excel format directly from the dashboard.
